@@ -1,0 +1,19 @@
+{% load static %}
+
+<head>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <title>
+        {{ page_title }}
+    </title>
+</head>
+<body>
+    <ul>
+        {% for element in custom_list %}
+        <li>
+            <div>ID: {{ element.id }} </div>
+            <div>Name: {{ element.name }} </div>
+        </li>
+        {% endfor %}
+    </ul>
+ Go to accommodation page <a href="{% url 'accommodation:list' %}">here </a>
+</body>

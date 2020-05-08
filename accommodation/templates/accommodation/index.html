@@ -1,0 +1,41 @@
+<p>
+    Click <a href=" {% url 'accommodation:create' %}" > here </a> to create a new accommodation.
+</p>
+
+
+<h3>This is the whole list of accommodation</h3>
+
+<form action="{% url 'accommodation:list' %}" method="post">
+    {% csrf_token %}
+    <label>Search by city</label>
+    <input type="text" name="search_for_city" value="{{ search_term }}" />
+    <input type="submit" value="Search" />
+
+</form>
+
+<p>
+    You are searching by "{{ search_term }}".
+   Found {{ accommodation_list.count }} result{{ accommodation_list.count|pluralize }}.
+</p>
+{% if not search_term %}
+    <p>You are viewing all the results.</p>
+{% endif %}
+
+<!--{% if search_term %}-->
+<!--<p>You are searching by "{{ search_term }}" </p>-->
+<!--{% else %}-->
+<!--<p>You are viewing all the results.</p>-->
+<!--{% endif %}-->
+
+<ul>
+    {% for accommodation in accommodation_list %}
+        <li>
+            <p>
+                ID: {{ accommodation.id }}
+                <a href="{% url 'accommodation:details' accommodation.id  %}">View details</a>
+            </p>
+            <p>Name: {{ accommodation.name }}</p>
+            <p>Location: {{ accommodation.location }}</p>
+        </li>
+    {% endfor %}
+</ul>

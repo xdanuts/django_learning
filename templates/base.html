@@ -1,0 +1,12 @@
+{% load static %}
+<html>
+    <head>
+        <title> Custom website</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/app.css' %}" />
+    </head>
+    <body>
+        <img src="{% static 'images/djangologo.jpg' %}" width="300" height="100">
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
