@@ -5,6 +5,7 @@ from accommodation.models import Accommodation
 
 # Create your views here.
 
+
 def index(request):
     search_term = ""
     # search_term = "None"
@@ -23,6 +24,7 @@ def index(request):
 
     return render(request, "accommodation/index.html" , context)
 
+
 def details(request, accommodation_id):
     accommodation = get_object_or_404(Accommodation, pk=accommodation_id)
 
@@ -32,9 +34,11 @@ def details(request, accommodation_id):
 
     return render(request, "accommodation/details.html", context)
 
+
 def create(request):
 
     return render(request, "accommodation/create.html")
+
 
 def submit(request):
     name = request.POST['name']
@@ -44,14 +48,15 @@ def submit(request):
 
     return HttpResponseRedirect(reverse('accommodation:list'))
 
-def delete(request,accommodation_id):
+
+def delete(request, accommodation_id):
     accommodation = get_object_or_404(Accommodation, pk=accommodation_id)
     accommodation.delete()
 
-
     return HttpResponseRedirect(reverse('accommodation:list'))
 
-def update(request,accommodation_id):
+
+def update(request, accommodation_id):
     accommodation = get_object_or_404(Accommodation, pk=accommodation_id)
     new_name = request.POST['name']
     new_location = request.POST['location']
@@ -61,3 +66,12 @@ def update(request,accommodation_id):
     accommodation.save()
 
     return HttpResponseRedirect(reverse('accommodation:details', args=(accommodation_id, )))
+
+
+def delete_form(request, accommodation_id):
+    accommodation = get_object_or_404(Accommodation, pk=accommodation_id)
+    context = {
+        'accommodation': accommodation
+    }
+
+    return render(request, "accommodation/delete_form.html", context)

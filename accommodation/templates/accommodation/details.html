@@ -3,7 +3,8 @@
 <p>Name: {{ accommodation.name }}</p>
 <p>Location: {{ accommodation.location }}</p>
 <a href="{% url 'accommodation:list' %}">Back</a>
-<a href="{% url 'accommodation:delete' accommodation.id %}" style="color: red">Delete</a>
+<!--<a href="{% url 'accommodation:delete' accommodation.id %}" style="color: red">Delete</a>-->
+<a href="{% url 'accommodation:delete_form' accommodation.id %}" style="color: red">Delete</a>
 
 
 <h3>Update this accommodation</h3>

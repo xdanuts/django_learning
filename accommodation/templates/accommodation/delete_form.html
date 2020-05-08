@@ -1,0 +1,11 @@
+<h3>Are you sure you want to delete {{ accommodation.name }} ?</h3>
+
+
+
+<form action="{% url 'accommodation:delete' accommodation.id %}" method="post">
+    {% csrf_token %}
+
+    <div>
+        <input type="submit" value="Delete"/>
+    </div>
+</form>
